@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+  
+  body {
+    background-color: #030712;
+    color: #f8fafc;
+    overflow-x: hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #060b14;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 4px;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0284c7;
+  }
+}
+
+/* Glassmorphism panel */
+.glass-panel {
+  background: rgba(13, 25, 46, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.glass-panel-glow {
+  background: rgba(13, 25, 46, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.08), inset 0 0 15px rgba(0, 240, 255, 0.03);
+}
+
+.glass-panel-ember {
+  background: rgba(22, 16, 26, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  box-shadow: 0 0 25px rgba(249, 115, 22, 0.08);
+}
+
+/* Anime scanline texture */
+.pokedex-scanline {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.02),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.02)
+  );
+  background-size: 100% 4px, 6px 100%;
+}
+
+/* Water Flow SVG background glow */
+.water-gradient-text {
+  background: linear-gradient(135deg, #ffffff 20%, #38bdf8 60%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.flame-gradient-text {
+  background: linear-gradient(135deg, #ffffff 20%, #fb923c 60%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cyan-gradient-text {
+  background: linear-gradient(135deg, #ffffff 10%, #00f0ff 70%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Anime tech corner cuts */
+.clip-chamfer {
+  clip-path: polygon(
+    0 12px, 
+    12px 0, 
+    calc(100% - 12px) 0, 
+    100% 12px, 
+    100% calc(100% - 12px), 
+    calc(100% - 12px) 100%, 
+    12px 100%, 
+    0 calc(100% - 12px)
+  );
+}
+
+.clip-badge {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% 100%,
+    10px 100%,
+    0 calc(100% - 10px)
+  );
+}
+
+/* Water Breathing Wave Border Effect */
+@keyframes waterRipples {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.4),
+                0 0 0 10px rgba(2, 132, 199, 0.2),
+                0 0 25px rgba(0, 240, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 240, 255, 0.2),
+                0 0 0 20px rgba(2, 132, 199, 0.05),
+                0 0 40px rgba(0, 240, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.4),
+                0 0 0 10px rgba(2, 132, 199, 0.2),
+                0 0 25px rgba(0, 240, 255, 0.3);
+  }
+}
+
+.water-aura-active {
+  animation: waterRipples 5s infinite ease-in-out;
+}
+
+/* Accessibility: Reduced motion query */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
